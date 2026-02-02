@@ -16,8 +16,8 @@
 
 @layer base {
   :root {
-
-      scrollbar-width: none !important;
+    
+    scrollbar-width: none !important;
     /* Dark theme as default for dashboard */
     --background: 0 0% 7%;
     --foreground: 0 0% 98%;
@@ -78,6 +78,7 @@
   }
 
   .dark {
+    scrollbar-width: none;
     --background: 0 0% 7%;
     --foreground: 0 0% 98%;
 
@@ -137,22 +138,27 @@
 @layer components {
   .glass-card {
     @apply relative overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl;
+    scrollbar-width: none;
   }
   
   .glass-card-gold {
     @apply relative overflow-hidden rounded-xl border border-primary/30 bg-white/5 backdrop-blur-xl;
+    scrollbar-width: none;
   }
   
   .gradient-bg {
     background: linear-gradient(135deg, hsl(0 0% 6%) 0%, hsl(0 0% 10%) 50%, hsl(30 10% 8%) 100%);
+    scrollbar-width: none;
   }
   
   .text-gradient-gold {
     @apply bg-gradient-to-r from-primary to-yellow-400 bg-clip-text text-transparent;
+    scrollbar-width: none;
   }
   
   .glow-gold {
     box-shadow: 0 0 20px hsl(43 100% 50% / 0.2), 0 0 40px hsl(43 100% 50% / 0.1);
+    scrollbar-width: none;
   }
 }
 
