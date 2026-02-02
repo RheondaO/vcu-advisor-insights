@@ -134,3 +134,14 @@
     box-shadow: 0 0 20px hsl(43 100% 50% / 0.2), 0 0 40px hsl(43 100% 50% / 0.1);
   }
 }
+
+  /* Global scrollbar removal */
+html {
+  overflow-y: auto;            /* allow scrolling */
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE / Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Edge */
+}
