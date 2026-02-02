@@ -112,6 +112,7 @@
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
   }
+}
 
 @layer components {
   .glass-card {
