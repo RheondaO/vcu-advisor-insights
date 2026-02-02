@@ -136,13 +136,13 @@
   }
 }
 
-  /* Global scrollbar removal */
+/* index.css */
 html {
-  overflow-y: auto;            /* allow scrolling */
-  scrollbar-width: none;        /* Firefox */
-  -ms-overflow-style: none;     /* IE / Edge */
+  overflow-y: auto !important;           /* allow scrolling */
+  scrollbar-width: none !important;      /* Firefox */
+  -ms-overflow-style: none !important;   /* IE / Edge */
 }
 
 html::-webkit-scrollbar {
-  display: none;                /* Chrome, Safari, Edge */
+  display: none !important;              /* Chrome, Safari, Edge */
 }
