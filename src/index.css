@@ -16,6 +16,8 @@
 
 @layer base {
   :root {
+
+      scrollbar-width: none !important;
     /* Dark theme as default for dashboard */
     --background: 0 0% 7%;
     --foreground: 0 0% 98%;
@@ -72,7 +74,7 @@
     --sidebar-border: 0 0% 20%;
     --sidebar-ring: 43 100% 50%;
 
-    scrollbar-width: none !important;
+
   }
 
   .dark {
@@ -118,6 +120,7 @@
 @layer base {
   * {
     @apply border-border;
+    scrollbar-width: none;
   }
 
   html, body {
