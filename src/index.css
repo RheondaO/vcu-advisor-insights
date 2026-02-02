@@ -106,12 +106,8 @@
 @layer base {
   * {
     @apply border-border;
+    scrollbar-width: none;
   }
-
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;
-}
   
   body {
     @apply bg-background text-foreground antialiased;
