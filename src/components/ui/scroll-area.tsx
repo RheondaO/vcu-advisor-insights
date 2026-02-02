@@ -1,19 +1,23 @@
 import * as React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
-
 import { cn } from "@/lib/utils";
-
 
 const ScrollArea = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
-  <ScrollAreaPrimitive.Root ref={ref} className={cn("relative overflow-hidden", className)} {...props}>
-    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">{children}</ScrollAreaPrimitive.Viewport>
+  <ScrollAreaPrimitive.Root 
+    ref={ref} 
+    className={cn("relative overflow-hidden", className)} 
+    {...props}
+  >
+    {/* This Viewport handles the actual scrolling math - WE KEEP THIS */}
+    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:display-none">
+      {children}
+    </ScrollAreaPrimitive.Viewport>
     
-    {/*
-    <ScrollBar /> */}
-    
+    {/* We keep the component here for internal compatibility but it won't render anything visible */}
+    <ScrollBar />
     <ScrollAreaPrimitive.Corner />
   </ScrollAreaPrimitive.Root>
 ));
@@ -26,15 +30,14 @@ const ScrollBar = React.forwardRef<
   <ScrollAreaPrimitive.ScrollAreaScrollbar
     ref={ref}
     orientation={orientation}
+    /* This set of classes forces the bar to be 0px wide/tall and invisible */
     className={cn(
-      "flex touch-none select-none transition-colors",
-      orientation === "vertical" && "h-full w-2.5 border-l border-l-transparent p-[1px]",
-      orientation === "horizontal" && "h-2.5 flex-col border-t border-t-transparent p-[1px]",
-      className,
+      "flex touch-none select-none transition-colors !hidden !w-0 !h-0 opacity-0 pointer-events-none",
+      className
     )}
     {...props}
   >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-border" />
+    <ScrollAreaPrimitive.ScrollAreaThumb className="hidden !w-0 !h-0" />
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
 ));
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
