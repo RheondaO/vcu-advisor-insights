@@ -117,6 +117,10 @@
   * {
     @apply border-border;
   }
+
+  html, body {
+    overflow-y: auto !important;           /* allow scrolling */
+  }
   
   body {
     @apply bg-background text-foreground antialiased;
