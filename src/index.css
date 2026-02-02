@@ -120,12 +120,13 @@
 
   html, body {
     overflow-y: auto !important;           /* allow scrolling */
+    scrollbar-width: none !important;
   }
   
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
-  }
+    scrollbar-width: none !important;
 }
 
 @layer components {
