@@ -29,6 +29,66 @@ const scrollbarHidingCSS = `
   </style>
 `;
 
+**
+ * Injects scrollbar-hiding CSS into the current document head
+ */
+export function injectGlobalStyles() {
+  const style = document.createElement('style');
+  style.textContent = `
+    /* Hide scrollbars for the whole document */
+    html, body {
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+    
+    /* Global webkit override */
+    *::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+/**
+ * Initialize all scrollbar hiding functionality
+ * Call this once in your main app component
+ */
+export function initScrollbarHiding() {
+  // NEW: Inject into the app's own document immediately
+  injectGlobalStyles();
+  
+  // Hide scrollbars in existing iframes
+  hideAllIframeScrollbars();
+  
+  // Watch for new iframes
+  const iframeObserver = watchForIframes();
+  
+  // Watch for modals (Radix UI/Shadcn)
+  const modalObserver = hideModalScrollbars();
+  
+  return () => {
+    iframeObserver.disconnect();
+    modalObserver.disconnect();
+  };
+}
+
+// Then update your initScrollbarHiding function:
+export function initScrollbarHiding() {
+  // NEW: Inject into our own document first
+  injectGlobalStyles();
+  
+  hideAllIframeScrollbars();
+  const iframeObserver = watchForIframes();
+  const modalObserver = hideModalScrollbars();
+  
+  return () => {
+    iframeObserver.disconnect();
+    modalObserver.disconnect();
+  };
+}
+
 /**
  * Inject scrollbar-hiding CSS into an iframe
  */
