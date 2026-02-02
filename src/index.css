@@ -4,6 +4,16 @@
 
 /* VCU SFMC Gap Analysis Dashboard - Dark Glassmorphism Theme */
 
+/* Global scrollbar hiding - applies to ALL elements */
+* {
+  scrollbar-width: none !important;      /* Firefox */
+  -ms-overflow-style: none !important;   /* IE / Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none !important;              /* Chrome, Safari, Edge */
+}
+
 @layer base {
   :root {
     /* Dark theme as default for dashboard */
@@ -106,16 +116,6 @@
 @layer base {
   * {
     @apply border-border;
-  }
-
-  html {
-    overflow-y: auto !important;
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-  }
-
-  html::-webkit-scrollbar {
-    display: none !important;
   }
   
   body {
