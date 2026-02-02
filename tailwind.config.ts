@@ -104,5 +104,19 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+plugins: [
+    require("tailwindcss-animate"),
+    // Custom plugin to hide scrollbars
+    function({ addUtilities }) {
+      addUtilities({
+        '.no-scrollbar::-webkit-scrollbar': {
+          'display': 'none',
+        },
+        '.no-scrollbar': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+        },
+      })
+    },
+  ],
 } satisfies Config;
