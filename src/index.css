@@ -6,12 +6,12 @@
 
 /* Global scrollbar hiding - applies to ALL elements */
 * {
-  scrollbar-width: none !important;      /* Firefox */
-  -ms-overflow-style: none !important;   /* IE / Edge */
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE / Edge */
 }
 
 *::-webkit-scrollbar {
-  display: none !important;              /* Chrome, Safari, Edge */
+  display: none !important; /* Chrome, Safari, Edge */
 }
 
 @layer base {
