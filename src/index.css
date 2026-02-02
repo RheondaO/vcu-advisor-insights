@@ -108,12 +108,15 @@
     @apply border-border;
   }
 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+  
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
-    scrollbar-width: none;
   }
-}
 
 @layer components {
   .glass-card {
