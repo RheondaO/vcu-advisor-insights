@@ -1,6 +1,3 @@
-
-import { useEffect } from "react";
-import { initScrollbarHiding } from "@/lib/hideScrollbars";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,36 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
-
 const queryClient = new QueryClient();
 
-const App = () => {
-useEffect(() => {
-    // Initialize scrollbar hiding for iframes and modals
-    const cleanup = initScrollbarHiding();
-
-    // 2. Direct Global Injection for the current document
-    const style = document.createElement('style');
-    style.textContent = `
-      /* Hide scrollbars for everyone and everything */
-      html, body, #root {
-        scrollbar-width: none !important;
-        -ms-overflow-style: none !important;
-        overflow: -moz-scrollbars-none;
-      }
-      ::-webkit-scrollbar {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-      }
-    `;
-    document.head.appendChild(style);
-    
-    return cleanup;
-  }, []);
-
-  return (
-  
+const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
